@@ -1,0 +1,18 @@
+﻿@model IEnumerable<ResisterAndLoginApp.Models.CDModel>
+
+
+
+<div class="container d-flex flex-wrap">
+    @foreach (var item in Model)
+    {
+            <div class="card" style="width: 18rem;">
+                <img src="@item.URL" class="card-img-top" alt="@item.DeckName">
+              <div class="card-body">
+                <h5 class="card-title">Deck: @item.DeckName</h5>
+                <p class="card-text">Card: @item.CardName</p>
+                <a href="/CD/ShowDetails/@item.Id" class="btn btn-primary">Show details</a>
+                <a href="/CD/Delete/@item.Id" class="btn btn-danger">Remove card from @item.DeckName</a>
+              </div>
+            </div>
+    }
+</div>
