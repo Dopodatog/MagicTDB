@@ -1,0 +1,27 @@
+2023-03-22 15:22:15.9462 INFO Processing a login attempt
+2023-03-22 15:22:15.9978 INFO Name: kyle Password: l2i1v3ne
+2023-03-22 15:22:17.6587 INFO Login success
+2023-03-22 15:22:24.3423 INFO Processing a login attempt
+2023-03-22 15:22:24.3423 INFO Name: kyle Password: red
+2023-03-22 15:22:24.3488 WARN Login failure
+2023-03-22 15:49:00.4757 INFO Processing a login attempt
+2023-03-22 15:49:00.5163 INFO Name: kyle Password: L2i1v3ne
+2023-03-22 15:49:01.5545 INFO Login success
+2023-03-22 15:54:17.3094 INFO Processing a login attempt
+2023-03-22 15:54:17.3495 INFO Name: kyle Password: l2i1v3ne
+2023-03-22 15:54:18.6091 INFO Login success
+2023-03-22 15:54:37.7835 INFO Processing a login attempt
+2023-03-22 15:54:37.7835 INFO Name: kyle Password: l
+2023-03-22 15:54:37.7876 WARN Login failure
+2023-03-22 17:16:01.8323 INFO Processing a login attempt
+2023-03-22 17:16:01.9161 INFO Name: kyle Password: l2i1v3ne
+2023-03-22 17:16:03.3911 INFO Login success
+2023-03-22 17:36:55.4620 INFO Processing a login attempt
+2023-03-22 17:36:55.5077 INFO Name: kyle Password: l
+2023-03-22 17:36:57.0320 WARN Login failure
+2023-03-22 17:37:10.7895 INFO Processing a login attempt
+2023-03-22 17:37:10.7895 INFO Name: kyle Password: l2i1v3ne
+2023-03-22 17:37:10.8028 INFO Login success
+2023-03-22 17:37:39.7032 INFO Processing a login attempt
+2023-03-22 17:37:39.7032 INFO Name: kyle Password: l2i1v3ne
+2023-03-22 17:37:39.7110 INFO Login success

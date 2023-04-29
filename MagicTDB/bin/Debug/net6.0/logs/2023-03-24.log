@@ -1,0 +1,9 @@
+2023-03-24 21:15:04.2734 INFO Processing a login attempt
+2023-03-24 21:15:04.3088 INFO Name: kyle Password: l2i1v3ne
+2023-03-24 21:15:05.9114 INFO Login success
+2023-03-24 21:15:31.4208 INFO Processing a login attempt
+2023-03-24 21:15:31.4208 INFO Name: Dopod Password: redwall1
+2023-03-24 21:15:31.4288 WARN Login failure
+2023-03-24 21:15:39.1487 INFO Processing a login attempt
+2023-03-24 21:15:39.1487 INFO Name: Dopod Password: redwall
+2023-03-24 21:15:39.1487 INFO Login success
