@@ -12,20 +12,13 @@ namespace MagicTDB.Services
 {
     public class UsersDAO
     {
-        //string connectionString = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog = Test; " +
-        //    "Integrated Security = True; Connect Timeout = 30; Encrypt=False;TrustServerCertificate=False;" +
-        //    "ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
+
         string connectionString = "datasource=localhost;port=3306;username=root;password=root;database=users;";
 
         public bool FindUserByNameAndPassword(UserModel user)
         {
 
             bool success = false;
-            //string sqlStatement = "SELECT * FROM DBO.users WHERE username = @username AND password = @password";
-   
-            //command.Parameters.Add("@username", System.Data.SqlDbType.VarChar, 100).Value = user.UserName;
-            //command.Parameters.Add("@password", System.Data.SqlDbType.VarChar, 100).Value = user.Password;
-            //data types may be found in DB
 
             MySqlConnection connection = new MySqlConnection(connectionString);
             try
