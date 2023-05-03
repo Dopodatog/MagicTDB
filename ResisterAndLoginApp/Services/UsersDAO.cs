@@ -4,17 +4,33 @@ using MagicTDB.Models;
 using System.Reflection.Metadata.Ecma335;
 using System.Data.SqlClient;
 using MySql.Data.MySqlClient;
+using Microsoft.AspNetCore.Identity;
 using System.Security.Cryptography;
 using System.Text;
-using Microsoft.AspNetCore.Identity;
 
 namespace MagicTDB.Services
 {
     public class UsersDAO
     {
+        static string saltFather = "TooSalty";
 
         string connectionString = "datasource=localhost;port=3306;username=root;password=root;database=users;";
 
+
+        public string HashString(string inputString)
+        {
+            byte[] saltBytes = Encoding.UTF8.GetBytes(saltFather);
+            byte[] inputBytes = Encoding.UTF8.GetBytes(inputString);
+
+            byte[] saltedInputBytes = new byte[saltBytes.Length + inputBytes.Length];
+            saltBytes.CopyTo(saltedInputBytes, 0);
+            inputBytes.CopyTo(saltedInputBytes, saltBytes.Length);
+
+            SHA256 sha = SHA256.Create();
+            byte[] hashBytes = sha.ComputeHash(saltedInputBytes);
+
+            return Convert.ToBase64String(hashBytes);
+        }
         public bool FindUserByNameAndPassword(UserModel user)
         {
 
@@ -27,9 +43,11 @@ namespace MagicTDB.Services
 
                 MySqlCommand command = new MySqlCommand();
 
-                command.CommandText = "SELECT * FROM CATS WHERE USER = @uname AND PASSWORD = @pword)";
+                string PasswordHash = HashString(user.Password);
+
+                command.CommandText = "SELECT * FROM CATS WHERE CAT_USER = @uname AND CAT_PASSWORD = @pword";
                 command.Parameters.AddWithValue("@uname", user.UserName);
-                command.Parameters.AddWithValue("@pword", user.Password);
+                command.Parameters.AddWithValue("@pword", PasswordHash);
                 command.Connection = connection;
 
                 using (MySqlDataReader reader = command.ExecuteReader())
@@ -51,8 +69,7 @@ namespace MagicTDB.Services
 
         public int AddUser(UserModel newUser)
         {
-            byte[] PasswordSalt = new byte[32];
-            byte[] PasswordHash = new byte[32];
+
             int newRows = -1;
             MySqlConnection connection = new MySqlConnection(connectionString);
             try
@@ -60,26 +77,19 @@ namespace MagicTDB.Services
                 connection.Open();
                 MySqlCommand command = new MySqlCommand();
 
-                command.CommandText = "INSERT INTO CATS (USER, PASSWORD, EMAIL) " +
+                command.CommandText = "INSERT INTO CATS (CAT_USER, CAT_PASSWORD, CAT_EMAIL) " +
                     "VALUES (@THISUSER, @THISPASS, @THISEMAIL)";
 
-                using(var hmac = new HMACSHA512())
-                {
 
-                    PasswordSalt = hmac.Key;
-                    PasswordHash = hmac.ComputeHash(System.Text.Encoding.UTF8.GetBytes(newUser.Password));
-
-                }
-                //byte[] PasswordHash
-                //byte[] PasswordSalt
+                string PasswordHash = HashString(newUser.Password);
+                
 
                 command.Parameters.AddWithValue("@THISUSER", newUser.UserName);
                 command.Parameters.AddWithValue("@THISPASS", PasswordHash);
                 command.Parameters.AddWithValue("@THISEMAIL", newUser.Email);
-                command.Parameters.AddWithValue("@THISEMAIL", PasswordSalt);
                 command.Connection = connection;
                 newRows = command.ExecuteNonQuery();
-                // close connection after query 
+        
                 connection.Close();
 
 
@@ -90,6 +100,5 @@ namespace MagicTDB.Services
             }
             return newRows;
         }
-
     }
 }

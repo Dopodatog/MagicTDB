@@ -9,6 +9,8 @@ namespace MagicTDB.Services
         string connectionString =
             "datasource=localhost;port=3306;username=root;password=root;database=magic;";
 
+        public int HelpingInt= 0;
+
         public int Delete(CardModel card)
         {
             int result = -1;
@@ -508,6 +510,8 @@ namespace MagicTDB.Services
 
         public int InsertCD(int deckId, int cardId)
         {
+            Console.WriteLine($"INSERT {deckId} {cardId}");
+            Console.WriteLine(HelpingInt);
             int newRows = -1;
             MySqlConnection connection = new MySqlConnection(connectionString);
             try
@@ -654,6 +658,11 @@ namespace MagicTDB.Services
                 Console.WriteLine(e.Message);
             }
             return returnCard;
+        }
+
+        public void SetInt(int id)
+        {
+            HelpingInt = id;
         }
     }
 }

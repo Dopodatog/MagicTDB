@@ -2,16 +2,19 @@
 using Newtonsoft.Json.Linq;
 using MagicTDB.Models;
 using MagicTDB.Services;
+using Mysqlx.Crud;
+using MagicTDB.Utility;
 
 namespace MagicTDB.Controllers
 {
     public class CardController : Controller
     {
+
+
         //All of these are called from the user
+        
         public IActionResult Index()
         {
-            //JObject deckOfCards = new JObject();
-            
             CardDAO deckOfCards = new CardDAO();
             return View(deckOfCards.GetAllCards());
         }
@@ -25,7 +28,7 @@ namespace MagicTDB.Controllers
             return View("Index", cardsList);
         }
 
-        public IActionResult SearchForm() 
+        public IActionResult SearchForm()
         {
             return View();
         }
@@ -36,7 +39,7 @@ namespace MagicTDB.Controllers
 
         public IActionResult ProcessCreate(CardModel cardBeingCreated)
         {
-            
+
             CardDAO deckOfCards = new CardDAO();
             deckOfCards.Insert(cardBeingCreated);
 
@@ -78,18 +81,26 @@ namespace MagicTDB.Controllers
             return View("Index", deckOfCards.GetAllCards());
         }
 
-        public IActionResult AddCardToDeck(int cardID)
+        public IActionResult AddCardToDeck(CardModel card)
         {
+          
             CardDAO listOfDecks = new CardDAO();
+    
+            HoldMe.SetInt(card.Id);
+            
+
+         
+
+
             return View("ShowAddCardToDeck", listOfDecks.GetAllDecks());
 
         }
-        public IActionResult ProcessAddCardToDeck(CDModel deckID)
+        public IActionResult ProcessAddCardToDeck(DeckModel deck)
         {
-            Console.WriteLine(deckID.ToString());
-            
-
-            return View("Index");
+                       
+            CardDAO deckOfCards = new CardDAO();
+            deckOfCards.InsertCD(deck.Id, HoldMe.GetInt());
+            return View("DeckIndex", deckOfCards.GetAllDecks());
         }
     }
 }

@@ -1,0 +1,21 @@
+2023-05-02 13:25:12.7534 INFO Processing a login attempt
+2023-05-02 13:25:12.7896 INFO Name: a Password: a
+2023-05-02 13:25:12.8239 WARN Login failure
+2023-05-02 13:31:05.3311 INFO Processing a login attempt
+2023-05-02 13:31:05.3582 INFO Name: hi Password: hi
+2023-05-02 13:31:05.3896 WARN Login failure
+2023-05-02 13:35:05.7763 INFO Processing a login attempt
+2023-05-02 13:35:05.8019 INFO Name: cat Password: cat
+2023-05-02 13:35:05.8802 WARN Login failure
+2023-05-02 13:45:24.1208 INFO Processing a login attempt
+2023-05-02 13:45:24.1461 INFO Name: HI Password: hi
+2023-05-02 13:45:24.2096 WARN Login failure
+2023-05-02 13:50:24.6152 INFO Processing a login attempt
+2023-05-02 13:50:24.6507 INFO Name: HI Password: hi
+2023-05-02 13:50:25.0092 WARN Login failure
+2023-05-02 13:59:24.6750 INFO Processing a login attempt
+2023-05-02 13:59:24.7189 INFO Name: HI Password: hi
+2023-05-02 13:59:25.1888 WARN Login failure
+2023-05-02 15:47:56.9590 INFO Processing a login attempt
+2023-05-02 15:47:57.0128 INFO Name: HI Password: hi
+2023-05-02 15:47:57.6134 INFO Login success

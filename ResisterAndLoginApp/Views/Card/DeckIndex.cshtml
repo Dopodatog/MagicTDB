@@ -22,13 +22,14 @@
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.DeckName)
-                                        
                 </td>
                 <td>
-                    <a href="/Card/ProcessAddCardToDeck/@item.Id" class="btn btn-success">Add card to: @item.DeckName</a>
+                    <a href="/Deck/ShowDetails/@item.Id" class="btn btn-primary">Show details</a>
+                    <a href="/Deck/Edit/@item.Id" class="btn btn-warning">Edit deck</a>
+                    <a href="/Deck/Delete/@item.Id" class="btn btn-danger">Delete deck</a>
+                    <a href="/Deck/SearchResults/@item.Id" class="btn btn-success">Cards in deck</a>
                 </td>
             </tr>
         }
     </tbody>
-    
 </table>
