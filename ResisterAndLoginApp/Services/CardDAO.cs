@@ -41,7 +41,6 @@ namespace MagicTDB.Services
         public List<CardModel> GetAllCards()
         {
 
-
             List<CardModel> returnDeck = new List<CardModel>();
             //start with an empty list
 
@@ -510,8 +509,7 @@ namespace MagicTDB.Services
 
         public int InsertCD(int deckId, int cardId)
         {
-            Console.WriteLine($"INSERT {deckId} {cardId}");
-            Console.WriteLine(HelpingInt);
+            
             int newRows = -1;
             MySqlConnection connection = new MySqlConnection(connectionString);
             try
@@ -522,11 +520,21 @@ namespace MagicTDB.Services
                 //IGNORE makes it check to see if an identical object exists
                 //if true do nothing 
                 //if false so the insert
-                command.CommandText = "INSERT IGNORE INTO DECKSNCARDS (DECK_ID, CARD_ID) " +
-                    "VALUES (@DECK_ID, @CARD_ID)";
+                //"INSERT IGNORE INTO DECKSNCARDS (DECK_ID, CARD_ID) " +
+                //"VALUES (@DECK_ID, @CARD_ID)";
+                command.CommandText = "INSERT INTO decksncards (CARD_ID, DECK_ID) " +
+                    "SELECT @CARD_ID, @DECK_ID " +
+                    "FROM dual " +
+                    "WHERE NOT EXISTS (" +
+                        "SELECT * " +
+                        "FROM decksncards " +
+                        "WHERE CARD_ID = @CARD_ID " +
+                        "AND DECK_ID = @DECK_ID" +
+                        ")";
 
-                command.Parameters.AddWithValue("@DECK_ID", deckId);
+
                 command.Parameters.AddWithValue("@CARD_ID", cardId);
+                command.Parameters.AddWithValue("@DECK_ID", deckId);
                 command.Connection = connection;
                 newRows = command.ExecuteNonQuery();
                 connection.Close();
@@ -660,9 +668,5 @@ namespace MagicTDB.Services
             return returnCard;
         }
 
-        public void SetInt(int id)
-        {
-            HelpingInt = id;
-        }
     }
 }

@@ -10,8 +10,6 @@ namespace MagicTDB.Services
         List<CardModel> GetAllCards();
         List<CardModel> SearchCards(string searchTerm);
         CardModel GetCardById(int id);
-
-        void SetInt(int id);
         int Insert(CardModel card);
         int Delete(CardModel card);
         int Update(CardModel card);

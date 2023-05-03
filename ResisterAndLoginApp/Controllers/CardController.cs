@@ -39,10 +39,8 @@ namespace MagicTDB.Controllers
 
         public IActionResult ProcessCreate(CardModel cardBeingCreated)
         {
-
             CardDAO deckOfCards = new CardDAO();
             deckOfCards.Insert(cardBeingCreated);
-
             return View("Index", deckOfCards.GetAllCards());
 
         }
@@ -50,7 +48,6 @@ namespace MagicTDB.Controllers
         {
             CardDAO deckOfCards = new CardDAO();
             CardModel foundCard = deckOfCards.GetCardById(id);
-
             return View(foundCard);
 
         }
@@ -82,25 +79,24 @@ namespace MagicTDB.Controllers
         }
 
         public IActionResult AddCardToDeck(CardModel card)
-        {
-          
+        {          
             CardDAO listOfDecks = new CardDAO();
-    
             HoldMe.SetInt(card.Id);
-            
-
-         
-
-
             return View("ShowAddCardToDeck", listOfDecks.GetAllDecks());
-
         }
         public IActionResult ProcessAddCardToDeck(DeckModel deck)
-        {
-                       
+        {                       
             CardDAO deckOfCards = new CardDAO();
-            deckOfCards.InsertCD(deck.Id, HoldMe.GetInt());
-            return View("DeckIndex", deckOfCards.GetAllDecks());
+            int test = deckOfCards.InsertCD(deck.Id, HoldMe.GetInt());
+            if (test == 0)
+            {
+                Console.WriteLine("Card already in deck!");
+            }
+            else if (test == 1)
+            {
+                Console.WriteLine("Card added to: "+ deck.Id);
+            }
+            return View("CardsInDeck", deckOfCards.GetAllCardsFromThisDeckId(deck.Id));
         }
     }
 }

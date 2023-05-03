@@ -16,8 +16,8 @@ build_property.GenerateRazorMetadataSourceChecksumAttributes =
 build_property.MSBuildProjectDirectory = C:\Users\kylet\source\repos\MagicTDB\ResisterAndLoginApp
 build_property._RazorSourceGeneratorDebug = 
 
-[C:/Users/kylet/source/repos/MagicTDB/ResisterAndLoginApp/Views/Card/DeckIndex.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2FyZFxEZWNrSW5kZXguY3NodG1s
+[C:/Users/kylet/source/repos/MagicTDB/ResisterAndLoginApp/Views/Card/CardsInDeck.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2FyZFxDYXJkc0luRGVjay5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/kylet/source/repos/MagicTDB/ResisterAndLoginApp/Views/Card/Index.cshtml]
