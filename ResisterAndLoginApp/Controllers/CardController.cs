@@ -12,7 +12,10 @@ namespace MagicTDB.Controllers
 
 
         //All of these are called from the user
-        
+
+
+        [HttpGet]
+        [MyAuthorization]
         public IActionResult Index()
         {
             CardDAO deckOfCards = new CardDAO();

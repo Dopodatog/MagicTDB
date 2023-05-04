@@ -9,8 +9,6 @@ namespace MagicTDB.Services
         string connectionString =
             "datasource=localhost;port=3306;username=root;password=root;database=magic;";
 
-        public int HelpingInt= 0;
-
         public int Delete(CardModel card)
         {
             int result = -1;

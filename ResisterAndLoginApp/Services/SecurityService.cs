@@ -12,7 +12,6 @@ namespace MagicTDB.Services
         public bool IsValid(UserModel user)
         {
             return usersDAO.FindUserByNameAndPassword(user);
-
         }
     }
 }

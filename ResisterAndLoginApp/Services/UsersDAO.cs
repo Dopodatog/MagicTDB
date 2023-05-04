@@ -1,10 +1,5 @@
-﻿using static System.Net.Mime.MediaTypeNames;
-using System;
-using MagicTDB.Models;
-using System.Reflection.Metadata.Ecma335;
-using System.Data.SqlClient;
+﻿using MagicTDB.Models;
 using MySql.Data.MySqlClient;
-using Microsoft.AspNetCore.Identity;
 using System.Security.Cryptography;
 using System.Text;
 
